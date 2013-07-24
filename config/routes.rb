@@ -1,5 +1,7 @@
 Albooms::Application.routes.draw do
+  get ':controller(/:action).ng', format: 'ng'
   resources :albums
+  root to: 'albums#intex'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -41,7 +43,7 @@ Albooms::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
