@@ -5,6 +5,7 @@ class AlbumsController < ApplicationController
   # GET /albums.json
   def index
     @albums = Album.all
+    respond_with(@albums)
   end
 
   # GET /albums/1

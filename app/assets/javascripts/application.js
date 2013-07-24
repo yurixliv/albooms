@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require angular.min.js
+//= require angular-resource.min.js
+//= require angular/app.js
+//= require angular/controllers/album-controller.js
 //= require_tree .

@@ -1,7 +1,7 @@
 Albooms::Application.routes.draw do
   get ':controller(/:action).ng', format: 'ng'
   resources :albums
-  root to: 'albums#intex'
+  root to: 'albums#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
