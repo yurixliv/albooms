@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  duration: 2013-07-23 21:24:24
+  rating: 1
+  info: MyText
+  cover_url: MyString
+
+two:
+  title: MyString
+  duration: 2013-07-23 21:24:24
+  rating: 1
+  info: MyText
+  cover_url: MyString
