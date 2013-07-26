@@ -1,5 +1,5 @@
 Albooms::Application.routes.draw do
-  get ':controller(/:action).ng', format: 'ng'
+  match ':controller(/:action).ng', format: 'ng', via: [:get, :post]
   resources :albums
   root to: 'albums#index'
 

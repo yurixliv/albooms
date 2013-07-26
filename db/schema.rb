@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20130724002424) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
-    t.datetime "duration"
+    t.integer  "duration"
     t.integer  "rating"
     t.text     "info"
     t.string   "cover_url"

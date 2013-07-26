@@ -8,6 +8,7 @@
       <th>Rating</th>
       <th>Info</th>
       <th>Cover url</th>
+      <th>Id</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,18 +16,17 @@
   </thead>
 
   <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.title %></td>
-        <td><%= album.duration %></td>
-        <td><%= album.rating %></td>
-        <td><%= album.info %></td>
-        <td><%= album.cover_url %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr ng-repeat='album in albums'>
+        <td>{{ album.title }} - {{$index}}</td>
+        <td>{{ album.duration }}</td>
+        <td>{{ album.rating }}</td>
+        <td>{{ album.info }}</td>
+        <td>{{ album.cover_url }}</td>
+        <td>{{ album.id }}</td>
+        <td><%= link_to 'Show', "/albums/{{album.id}}" %></td>
+        <td><%= link_to 'Edit', "/albums/{{album.id}}/edit" %></td>
+        <td><%= link_to 'Destroy', "/albums", { 'ng-click' => "delete($index)" } %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 

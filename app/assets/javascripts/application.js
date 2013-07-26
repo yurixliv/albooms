@@ -12,9 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require angular.min.js
-//= require angular-resource.min.js
+//= require bootstrap
+
+
+// First require angular
+//= require angular
+//= require angular-resource
+
+// Later.. require app
 //= require angular/app.js
+//= require angular/services/resources
 //= require angular/controllers/album-controller.js
-//= require_tree .
+
+//= require angular/routes/routes

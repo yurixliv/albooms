@@ -1,0 +1,48 @@
+<% url = Albooms::Application.routes.url_helpers %>
+
+albooms.controller('AlbumController', ['$scope', 'Album', '$location', function($scope, Album, $location){
+	$scope.albums = Album.query();
+
+	$scope.delete = function($index) {
+		return $scope.albums[$index].$delete( function() {
+			return $scope.albums = Album.query();
+		});
+	}
+
+}]);
+
+albooms.controller('AlbumDetailsController', ['$scope', 'Album', '$routeParams', function($scope, Album, $routeParams){
+	$scope.album = Album.get({id: $routeParams.id});
+}]);
+
+albooms.controller('AlbumFormController', ['$scope', 'Album', '$routeParams', '$location', function($scope, Album, $routeParams, $location){
+
+	if ($routeParams.id) {
+		$scope.album = Album.get( { id: $routeParams.id } );
+	} else {
+		$scope.album = {};
+	}
+
+	$scope.submit = function() {
+		var redirect_url, album, saved, errors;
+
+		album = $scope.album
+		redirect_url = '<%= url.album_path(id: ":id") %>'
+		redirect_url = redirect_url.replace(':id', album.id || '');
+
+		function saved(album) {
+			return $location.path(redirect_url, {id: album.id});
+		}
+
+		function errors(response) {
+			return $scope.album.errors = response.data.errors;
+		}
+
+		if (album.id) {
+			return album.$save(album, saved, errors);
+		} else {
+			return Album.create(album, saved, errors);
+		}
+	}
+
+}]);

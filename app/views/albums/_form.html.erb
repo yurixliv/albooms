@@ -1,37 +1,92 @@
-<%= form_for(@album) do |f| %>
-  <% if @album.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+<!-- <form accept-charset="UTF-8" action="/albums/{{album.id}}/edit" method="post" ng-submit="submit()" onsubmit:'return false'>
 
-      <ul>
-      <% @album.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div ng-show="album.errors">
+    <h4>There are some errors</h4>
+    <ul ng-repeat='(attr, err) in album.errors'>
+      <li>{{attr}} - {{err}}</li>
+    </ul>
+  </div>
+
+  <div>
+    <label>
+      Name
+    </label>
+    <div>
+      <input name="title" ng-model="album.title" size="50" type="text" />
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div>
+    <label>
+      Duration
+    </label>
+    <div>
+      <input name="duration" ng-model="album.duration" size="50" type="text" />
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.datetime_select :duration %>
+
+  <div>
+    <label>
+      Rating
+    </label>
+    <div>
+      <input name="rating" ng-model="album.rating" size="50" type="text" />
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
+
+  <div>
+    <label>
+      Info
+    </label>
+    <div>
+      <textarea cols="40" name="info" ng-model="album.info" rows="20" >
+      </textarea>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :info %><br>
-    <%= f.text_area :info %>
+
+  <div>
+    <input type="submit" value="Save album" />
+    <a href="/albums{{ album.id && '/' + album.id }}">Cancel</a>
   </div>
-  <div class="field">
-    <%= f.label :cover_url %><br>
-    <%= f.text_field :cover_url %>
-  </div>
-  <div class="actions">
+
+</form> -->
+
+<%= form_for :album, html: { 'ng-submit' => 'submit()', onsubmit: 'return false'} do |f| %>
+
+  <fieldset>
+
+    <div class="control-group">
+      <%= f.label :title %>
+      <div class="controls">
+        <%= f.text_field :title, :'ng-model'=>'album.title' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :duration %>
+      <div class="controls">
+        <%= f.text_field :duration, :'ng-model'=>'album.duration' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :rating %>
+      <div class="controls">
+        <%= f.text_field :rating, :'ng-model'=>'album.rating' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :info %>
+      <div class="controls">
+        <%= f.text_field :info, :'ng-model'=>'album.Info' %>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <div class="form-actions">
     <%= f.submit %>
   </div>
+
 <% end %>
